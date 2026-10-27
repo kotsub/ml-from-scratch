@@ -1,0 +1,154 @@
+{
+  "seed": 42,
+  "python": "3.12.14",
+  "versions": {
+    "numpy": "2.3.5",
+    "scikit-learn": "1.8.0",
+    "matplotlib": "3.10.8"
+  },
+  "classification_dataset": "sklearn breast_cancer (569 rows, 30 numeric features)",
+  "regression_dataset": "sklearn diabetes (442 rows, 10 numeric features)",
+  "classification_split": {
+    "train": 455,
+    "test": 114,
+    "stratified": true
+  },
+  "regression_split": {
+    "train": 353,
+    "test": 89
+  },
+  "selected_on_train_cv": {
+    "knn_neighbors": 9,
+    "tree_max_depth": 2,
+    "tree_min_samples_leaf": 5
+  },
+  "classification": [
+    {
+      "model": "NumPy kNN",
+      "accuracy": 0.9736842105263158,
+      "f1_macro": 0.9712773998488284,
+      "fit_seconds": 0.00022880500000610482,
+      "predict_seconds": 0.008164059000591806
+    },
+    {
+      "model": "sklearn kNN",
+      "accuracy": 0.9736842105263158,
+      "f1_macro": 0.9712773998488284,
+      "fit_seconds": 0.0005343160000848002,
+      "predict_seconds": 0.01393363299939665
+    },
+    {
+      "model": "NumPy tree",
+      "accuracy": 0.8947368421052632,
+      "f1_macro": 0.8906649616368286,
+      "fit_seconds": 0.0074184149998473,
+      "predict_seconds": 0.00013466300060827052
+    },
+    {
+      "model": "sklearn tree",
+      "accuracy": 0.8947368421052632,
+      "f1_macro": 0.8906649616368286,
+      "fit_seconds": 0.0032703500000934582,
+      "predict_seconds": 0.00012312499984545866
+    }
+  ],
+  "knn_prediction_agreement": 1.0,
+  "tree_prediction_agreement": 1.0,
+  "regression": [
+    {
+      "model": "NumPy GD",
+      "rmse": 53.85341461887349,
+      "r2": 0.4526033976047771
+    },
+    {
+      "model": "sklearn OLS",
+      "rmse": 53.85344583676594,
+      "r2": 0.45260276297191915
+    }
+  ],
+  "gd_iterations": 20000,
+  "gd_final_loss": 1434.2748515677188,
+  "classification_cv": [
+    {
+      "algorithm": "knn",
+      "value": 1,
+      "mean_cv_accuracy": 0.9472527472527472,
+      "std_cv_accuracy": 0.018906209378115643
+    },
+    {
+      "algorithm": "knn",
+      "value": 3,
+      "mean_cv_accuracy": 0.9626373626373625,
+      "std_cv_accuracy": 0.00879120879120876
+    },
+    {
+      "algorithm": "knn",
+      "value": 5,
+      "mean_cv_accuracy": 0.9626373626373625,
+      "std_cv_accuracy": 0.011206636293610512
+    },
+    {
+      "algorithm": "knn",
+      "value": 9,
+      "mean_cv_accuracy": 0.9648351648351647,
+      "std_cv_accuracy": 0.014578570507056717
+    },
+    {
+      "algorithm": "tree",
+      "value": 1,
+      "mean_cv_accuracy": 0.9010989010989011,
+      "std_cv_accuracy": 0.012037858406706946
+    },
+    {
+      "algorithm": "tree",
+      "value": 2,
+      "mean_cv_accuracy": 0.9274725274725275,
+      "std_cv_accuracy": 0.021533975760731225
+    },
+    {
+      "algorithm": "tree",
+      "value": 4,
+      "mean_cv_accuracy": 0.9252747252747253,
+      "std_cv_accuracy": 0.026373626373626384
+    },
+    {
+      "algorithm": "tree",
+      "value": 8,
+      "mean_cv_accuracy": 0.9252747252747253,
+      "std_cv_accuracy": 0.026373626373626384
+    }
+  ],
+  "regularization_cv": [
+    {
+      "l2": 0.0,
+      "mean_cv_rmse": 55.382142566950805,
+      "std_cv_rmse": 2.369074337966309,
+      "mean_weight_norm": 67.37059139197073
+    },
+    {
+      "l2": 0.01,
+      "mean_cv_rmse": 55.394319624847114,
+      "std_cv_rmse": 2.3681702327830334,
+      "mean_weight_norm": 50.09504111008886
+    },
+    {
+      "l2": 0.1,
+      "mean_cv_rmse": 55.46724346848854,
+      "std_cv_rmse": 2.393484232845397,
+      "mean_weight_norm": 38.94474718555999
+    },
+    {
+      "l2": 1.0,
+      "mean_cv_rmse": 58.20936108754755,
+      "std_cv_rmse": 3.8575720240863833,
+      "mean_weight_norm": 25.034593860394075
+    },
+    {
+      "l2": 10.0,
+      "mean_cv_rmse": 70.45359224745813,
+      "std_cv_rmse": 5.497583498705549,
+      "mean_weight_norm": 7.0467175268840005
+    }
+  ],
+  "note": "GD vs OLS uses l2=0 fixed in advance; the L2 curve is a separate train-only CV experiment."
+}
